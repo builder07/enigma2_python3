@@ -15,10 +15,9 @@ from Tools.Directories import SCOPE_CONFIG, SCOPE_CURRENT_LCDSKIN, SCOPE_CURRENT
 from Tools.Import import my_import
 from Tools.LoadPixmap import LoadPixmap
 
-DEFAULT_SKIN = SystemInfo["HasFullHDSkinSupport"] and "PLi-FullNightHD/skin.xml" or "PLi-HD/skin.xml"
+DEFAULT_SKIN = SystemInfo["HasFullHDSkinSupport"] and "PLi-FullNightHD-FIX/skin.xml" or "PLi-HD-FIX/skin.xml"
 EMERGENCY_SKIN = "skin_default/skin.xml"
-EMERGENCY_NAME = "Stone II"
-DEFAULT_DISPLAY_SKIN = SystemInfo["grautec"] and "skin_default/skin_display_grautec.xml" or "skin_default/skin_display.xml"
+DEFAULT_DISPLAY_SKIN = "skin_default/skin_display.xml"
 USER_SKIN = "skin_user.xml"
 USER_SKIN_TEMPLATE = "skin_user_%s.xml"
 SUBTITLE_SKIN = "skin_subtitles.xml"
