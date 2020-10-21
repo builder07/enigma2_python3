@@ -14,9 +14,6 @@ from datetime import datetime
 from itertools import chain
 
 import xml.etree.cElementTree
-from boxbranding import getSoCFamily
-
-socfamily = getSoCFamily()
 
 config.unicable = ConfigSubsection()
 
