@@ -10,7 +10,7 @@ if [ $brandcheck == "mecool" ]; then
 	export media_arm_audio_decoder=ape,flac,dts,ac3,eac3,wma,wmapro,mp3,aac,vorbis,raac,cook,amr,pcm,adpcm
 fi
 
-if [ $platformcheck == "octagonhisil" ] || [ $modelcheck == "ustym4kpro" ] || [ $platformcheck == "gbmv200" ] || [ $modelcheck == "beyonwizv2" ] || [ $modelcheck == "viper4k" ]; then
+if [ $modelcheck == "ustym4kpro" ] || [ $modelcheck == "sf8008" ] || [ $modelcheck == "beyonwizv2" ] || [ $modelcheck == "viper4k" ]; then
 	count=`ps -ef |grep libreader |grep -v "grep" |wc -l`
 	if [ 0 == $count ];then
 		libreader 720P_50
