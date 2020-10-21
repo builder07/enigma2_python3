@@ -49,7 +49,7 @@ import itertools, datetime
 from RecordTimer import RecordTimerEntry, RecordTimer, findSafeRecordPath
 # hack alert!
 from Screens.Menu import MainMenu, mdom
-from boxbranding import getMachineBuild, getSoCFamily
+from boxbranding import getMachineBuild
 
 model = getBoxType()
 brand = getBoxBrand()
