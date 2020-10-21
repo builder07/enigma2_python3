@@ -29,7 +29,7 @@
 
 static const char *crash_emailaddr =
 #ifndef CRASH_EMAILADDR
-	"the Open Vision forum (https://forum.openvision.tech) or https://github.com/OpenVisionE2";
+	"the OpenFIX forum";
 #else
 	CRASH_EMAILADDR;
 #endif
@@ -203,7 +203,7 @@ void bsodFatal(const char *component)
 		strftime(tm_str, sizeof(tm_str), "%a %b %_d %T %Y", &tm);
 
 		fprintf(f,
-			"Open Vision enigma2 crash log\n\n"
+			"OpenFIX enigma2 crash log\n\n"
 			"crashdate=%s\n"
 			"compiledate=%s\n"
 			"skin=%s\n"
@@ -219,23 +219,13 @@ void bsodFatal(const char *component)
 			enigma2_rev,
 			component);
 
-		stringFromFile(f, "stbmodel", "/etc/openvision/model");
-		stringFromFile(f, "stbbrand", "/etc/openvision/brand");
-		stringFromFile(f, "stbplatform", "/etc/openvision/platform");
+		stringFromFile(f, "stbmodel", "/proc/stb/info/boxtype");
+		stringFromFile(f, "stbmodel", "/proc/stb/info/vumodel");
+		stringFromFile(f, "stbmodel", "/proc/stb/info/model");
 		stringFromFile(f, "kernelcmdline", "/proc/cmdline");
 		stringFromFile(f, "nimsockets", "/proc/bus/nim_sockets");
-		stringFromFile(f, "distro", "/etc/openvision/distro");
-		stringFromFile(f, "oe", "/etc/openvision/oe");
-		stringFromFile(f, "python", "/etc/openvision/python");
-		stringFromFile(f, "mediaservice", "/etc/openvision/mediaservice");
-		stringFromFile(f, "multilib", "/etc/openvision/multilib");
-		stringFromFile(f, "architecture", "/etc/openvision/architecture");
-		stringFromFile(f, "socfamily", "/etc/openvision/socfamily");
-		stringFromFile(f, "visionversion", "/etc/openvision/visionversion");
-		stringFromFile(f, "visionrevision", "/etc/openvision/visionrevision");
-		stringFromFile(f, "visionlanguage", "/etc/openvision/visionlanguage");
-		stringFromFile(f, "compiledby", "/etc/openvision/developername");
-		stringFromFile(f, "feedsurl", "/etc/openvision/feedsurl");
+		stringFromFile(f, "imageversion", "/etc/image-version");
+		stringFromFile(f, "imageissue", "/etc/issue.net");
 
 		/* dump the log ringbuffer */
 		fprintf(f, "\n\n");
