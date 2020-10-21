@@ -7,9 +7,6 @@ from Components.SystemInfo import SystemInfo
 import socket, fcntl, struct
 from Components.Console import Console
 from Tools.Directories import fileExists
-from boxbranding import getSoCFamily
-
-socfamily = getSoCFamily()
 
 def _ifinfo(sock, addr, ifname):
 	iface = struct.pack('256s', ifname[:15])
