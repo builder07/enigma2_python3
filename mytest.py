@@ -11,20 +11,15 @@ profile("PYTHON_START")
 # it will break output redirection for crash logs.
 from Tools import RedirectOutput
 from Tools.Directories import resolveFilename, fileExists
-from boxbranding import getVisionVersion, getVisionRevision, getHaveMultiLib, getMachineBuild, getSoCFamily
+from boxbranding import getMachineBuild
 from enigma import getBoxType, getBoxBrand
 
 model = getBoxType()
 brand = getBoxBrand()
 platform = getMachineBuild()
-socfamily = getSoCFamily()
 
-print("[mytest] Open Vision version = %s" % getVisionVersion())
-print("[mytest] Open Vision revision = %s" % getVisionRevision())
-print("[mytest] Brand/Meta = %s" % brand)
 print("[mytest] Model = %s" % model)
 print("[mytest] Platform = %s" % platform)
-print("[mytest] SoC family = %s" % socfamily)
 
 import enigma
 import eConsoleImpl
@@ -32,28 +27,6 @@ import eBaseImpl
 enigma.eTimer = eBaseImpl.eTimer
 enigma.eSocketNotifier = eBaseImpl.eSocketNotifier
 enigma.eConsoleAppContainer = eConsoleImpl.eConsoleAppContainer
-
-if getVisionVersion().startswith("10") and not fileExists ("/var/tmp/ntpv4.local") and platform != "dm4kgen":
-	from Components.Console import Console
-	print("[mytest] Try load all network interfaces.")
-	Console = Console()
-	Console.ePopen('/etc/init.d/networking restart ; /etc/init.d/samba.sh restart ; mount -a -t nfs,smbfs,cifs,ncpfs')
-	print("[mytest] All network interfaces loaded.")
-
-from Components.SystemInfo import SystemInfo
-if not SystemInfo["OpenVisionModule"]:
-	print("[mytest] Open Vision in multiboot! Now we have to remove what relies on our kernel module!")
-	from Components.Console import Console
-	Console = Console()
-	Console.ePopen('opkg remove enigma2-plugin-extensions-e2iplayer')
-	print("[mytest] Removed, this is on you not us!")
-
-from traceback import print_exc
-
-if getHaveMultiLib() == "True":
-	import usb.core
-	import usb.backend.libusb1
-	usb.backend.libusb1.get_backend(find_library=lambda x: "/lib64/libusb-1.0.so.0")
 
 profile("ClientMode")
 import Components.ClientMode
@@ -553,11 +526,6 @@ def runScreenTest():
 	vol = VolumeControl(session)
 	profile("Init:PowerKey")
 	power = PowerKey(session)
-
-	if SystemInfo["VFDSymbol"]:
-		profile("VFDSYMBOLS")
-		import Components.VfdSymbols
-		Components.VfdSymbols.SymbolsCheck(session)
 
 	# we need session.scart to access it from within menu.xml
 	session.scart = AutoScartControl(session)
