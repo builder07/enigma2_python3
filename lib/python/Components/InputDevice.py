@@ -14,7 +14,6 @@ import os
 import struct
 import platform
 from Tools.Directories import pathExists
-from boxbranding import getRCType
 
 model = getBoxType()
 
@@ -279,7 +278,6 @@ iInputDevices = inputDevices()
 
 
 config.plugins.remotecontroltype = ConfigSubsection()
-config.plugins.remotecontroltype.rctype = ConfigInteger(default = int(getRCType()))
 config.plugins.remotecontroltype.multirc = ConfigYesNo(default = False)
 
 class RcTypeControl():

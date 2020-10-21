@@ -83,8 +83,6 @@ def InitAVSwitch():
 		colorformat_choices["yuv"] = _("YPbPr")
 	if SystemInfo["HasScart"]:
 		colorformat_choices["rgb"] = _("RGB")
-	if SystemInfo["HasSVideo"]:
-		colorformat_choices["svideo"] = _("S-Video")
 
 	config.av.colorformat = ConfigSelection(choices=colorformat_choices, default="cvbs")
 	config.av.aspectratio = ConfigSelection(choices={
