@@ -3874,7 +3874,7 @@ PyObject *eEPGCache::search(ePyObject arg)
 				{
 					int casetype = PyLong_AsLong(PyTuple_GET_ITEM(arg, 4));
 					const char *str = PyString_AS_STRING(obj);
-					int strlen = PyString_Size(obj);
+					int strlen = PyMapping_Size(obj);
 					switch (querytype)
 					{
 						case 1:
